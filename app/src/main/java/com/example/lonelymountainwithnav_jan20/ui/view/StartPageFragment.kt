@@ -26,7 +26,8 @@ class StartPageFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
             createAccountBtn.setOnClickListener {
-                findNavController().navigate(R.id.start_page_fragment_to_name_fragment_action)
+                val direction=StartPageFragmentDirections.startPageFragmentToNameFragmentAction()
+                findNavController().navigate(direction)
             }
         }
     }

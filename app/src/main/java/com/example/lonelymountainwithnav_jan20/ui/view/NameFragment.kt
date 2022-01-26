@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import com.example.lonelymountainwithnav_jan20.databinding.FragmentNameBinding
@@ -17,35 +18,28 @@ class NameFragment: Fragment() {
 
     private var _binding: FragmentNameBinding? = null
     private val binding: FragmentNameBinding get()=_binding!!
+    private lateinit var viewModel: LonelyMountainViewModel
 
-    private lateinit var viewModel:LonelyMountainViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding= FragmentNameBinding.inflate(inflater, container, false)
         return binding.root
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel=ViewModelProvider(this).get(LonelyMountainViewModel::class.java)
+        viewModel=ViewModelProvider(requireActivity())[LonelyMountainViewModel::class.java]
         with(binding){
+            var firstName = firstNameEt.editText?.text.toString()
+            var surname = surnameEt.editText?.text.toString()
+
             toEmailBtn.setOnClickListener {
-
-                val firstName = firstNameEt.editText?.text.toString()
-                val surname = surnameEt.editText?.text.toString()
-                val direction =
-                    NameFragmentDirections.nameFragmentToEmailFragmentAction(
-                        firstName,
-                        surname
-                    )
-
+                viewModel.addFirstName(firstName)
+                viewModel.addSurname(surname)
+                val direction= NameFragmentDirections.nameFragmentToEmailFragmentAction()
                 findNavController().navigate(direction)
             }
         }

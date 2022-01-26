@@ -7,17 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.lonelymountainwithnav_jan20.R
 import com.example.lonelymountainwithnav_jan20.databinding.FragmentPasswordBinding
 import com.example.lonelymountainwithnav_jan20.ui.viewModel.LonelyMountainViewModel
 
 class PasswordFragment: Fragment() {
-    private val args: PasswordFragmentArgs by navArgs()
 
     private var _binding: FragmentPasswordBinding? = null
     private val binding: FragmentPasswordBinding get()=_binding!!
-
     private lateinit var viewModel: LonelyMountainViewModel
 
     override fun onCreateView(
@@ -25,28 +21,29 @@ class PasswordFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding= FragmentPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LonelyMountainViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[LonelyMountainViewModel::class.java]
         with(binding){
+            val password = passwordEt.editText?.text.toString()
+
             toInfoBtn.setOnClickListener {
-                val password = passwordEt.toString()
+                viewModel.addPassword(password)
 
-                val directions =
-                    PasswordFragmentDirections.passwordFragmentToInfoFragmentAction(
-                        args.firstName,
-                        args.surname,
-                        args.email,
-                        password
-                    )
+                val user=User(
+                    viewModel.firstName.value.toString(),
+                    viewModel.surname.value.toString(),
+                    viewModel.email.value.toString(),
+                    viewModel.password.value.toString())
 
-                findNavController().navigate(directions)
-//                findNavController().navigate(R.id.password_fragment_to_info_fragment_action)
+                viewModel.addUser(user)
+                val direction =
+                    PasswordFragmentDirections.passwordFragmentToInfoFragmentAction()
+                findNavController().navigate(direction)
             }
         }
     }

@@ -8,7 +8,7 @@ import com.example.lonelymountainwithnav_jan20.databinding.UserItemBinding
 class UserAdapter(private val userList: List<User>
 ): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = UserItemBinding.inflate(inflater,parent,false)
         return UserViewHolder(binding)
@@ -22,6 +22,7 @@ class UserAdapter(private val userList: List<User>
     }
     class UserViewHolder(private val binding: UserItemBinding):
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(user:User) {
             with(binding) {
                 firstNameInfoTv.text = user.firstName

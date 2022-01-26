@@ -15,7 +15,6 @@ import com.example.lonelymountainwithnav_jan20.ui.viewModel.LonelyMountainViewMo
 
 
 class InfoFragment: Fragment() {
-    private val args: InfoFragmentArgs by navArgs()
 
     private var _binding: FragmentInfoBinding? = null
     private val binding: FragmentInfoBinding get() = _binding!!
@@ -31,11 +30,19 @@ class InfoFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LonelyMountainViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[LonelyMountainViewModel::class.java]
         with(binding) {
 
+            viewModel.users.observe(viewLifecycleOwner){ users->
+                userRv.apply {
+                    adapter=UserAdapter(users)
+                    layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                }
+            }
             submitBtn.setOnClickListener {
-                findNavController().navigate(R.id.pop_up_info_fragment_to_start_page_fragment_action)
+                val direction= InfoFragmentDirections.popUpInfoFragmentToStartPageFragmentAction()
+                findNavController().navigate(direction)
             }
 
 

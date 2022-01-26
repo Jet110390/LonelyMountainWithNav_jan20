@@ -19,91 +19,91 @@
         <action
             android:id="@+id/name_fragment_to_email_fragment_action"
             app:destination="@id/email_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-            <argument
-                android:name="surname"
-                app:argType="string" />
+<!--            <argument-->
+<!--                android:name="first_name"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="surname"-->
+<!--                app:argType="string" />-->
         </action>
     </fragment>
     <fragment
         android:id="@+id/email_fragment"
         android:name="com.example.lonelymountainwithnav_jan20.ui.view.EmailFragment"
         tools:layout="@layout/fragment_email">
-        <argument
-            android:name="first_name"
-            app:argType="string" />
-        <argument
-            android:name="surname"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="first_name"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="surname"-->
+<!--            app:argType="string" />-->
         <action
             android:id="@+id/email_fragment_to_password_fragment_action"
             app:destination="@id/password_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-            <argument
-                android:name="surname"
-                app:argType="string" />
-            <argument
-                android:name="email"
-                app:argType="string" />
+<!--            <argument-->
+<!--                android:name="first_name"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="surname"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="email"-->
+<!--                app:argType="string" />-->
         </action>
     </fragment>
     <fragment
         android:id="@+id/password_fragment"
         android:name="com.example.lonelymountainwithnav_jan20.ui.view.PasswordFragment"
         tools:layout="@layout/fragment_password">
-        <argument
-            android:name="first_name"
-            app:argType="string" />
-        <argument
-            android:name="surname"
-            app:argType="string" />
-        <argument
-            android:name="email"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="first_name"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="surname"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="email"-->
+<!--            app:argType="string" />-->
         <action
             android:id="@+id/password_fragment_to_info_fragment_action"
             app:destination="@id/info_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-            <argument
-                android:name="surname"
-                app:argType="string" />
-            <argument
-                android:name="email"
-                app:argType="string" />
-            <argument
-                android:name="password"
-                app:argType="string" />
+<!--            <argument-->
+<!--                android:name="first_name"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="surname"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="email"-->
+<!--                app:argType="string" />-->
+<!--            <argument-->
+<!--                android:name="password"-->
+<!--                app:argType="string" />-->
         </action>
     </fragment>
     <fragment
         android:id="@+id/info_fragment"
         android:name="com.example.lonelymountainwithnav_jan20.ui.view.InfoFragment"
         tools:layout="@layout/fragment_info">
-        <argument
-            android:name="first_name"
-            android:defaultValue="John"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="first_name"-->
+<!--            android:defaultValue="John"-->
+<!--            app:argType="string" />-->
 
-        <argument
-            android:name="surname"
-            android:defaultValue="Doe"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="surname"-->
+<!--            android:defaultValue="Doe"-->
+<!--            app:argType="string" />-->
 
-        <argument
-            android:name="email"
-            android:defaultValue="gmail"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="email"-->
+<!--            android:defaultValue="gmail"-->
+<!--            app:argType="string" />-->
 
-        <argument
-            android:name="password"
-            android:defaultValue="abc123"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="password"-->
+<!--            android:defaultValue="abc123"-->
+<!--            app:argType="string" />-->
 
         <action
             android:id="@+id/pop_up_info_fragment_to_start_page_fragment_action"
